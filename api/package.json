@@ -4,14 +4,16 @@
   "description": "Example API server",
   "private": true,
   "scripts": {
-    "start": "DEBUG=api ts-node-dev -- ./src/index.ts",
+    "start": "cross-env-shell DEBUG=api ts-node-dev -- ./src/index.ts",
     "test": "node -e \"console.log('No tests yet!')\"",
     "lint": "eslint 'src/**/*.{js,ts}'",
     "prettier": "prettier --list-different 'src/**/*.{ts,tsx}'",
     "prettier-write": "prettier --write 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "debug": "^4.3.2",
     "dotenv-flow": "^3.2.0",
     "errorhandler": "^1.5.1",
