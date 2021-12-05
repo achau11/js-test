@@ -15,10 +15,15 @@ export function App() {
   const handleLanguageChange = (e) => {
     const lang = e.target.textContent.toUpperCase();
     if (language) {
+      // If the language button is clicked again it will reset to display unfiltered values.
       setLanguage('');
     } else {
       setLanguage(lang);
     }
+  };
+
+  const handleRepoClick = (id) => {
+    console.log(id);
   };
 
   //Filter arrays to display them on what language type was clicked
@@ -34,11 +39,13 @@ export function App() {
       return (
         <Repo
           key={repo.id}
+          index={state.indexOf(repo)}
           lang={repo.language}
           name={repo.name}
           desc={repo.description}
           forks_count={repo.forks_count}
-          onClick={handleLanguageChange}
+          buttonClick={handleLanguageChange}
+          repoClick={handleRepoClick}
         />
       );
     });

@@ -1,13 +1,24 @@
 import './repo.css';
 
-function Repo({ lang, name, desc, forks_count, onClick }) {
-  console.log(onClick);
+function Repo({
+  index,
+  lang,
+  name,
+  desc,
+  forks_count,
+  buttonClick,
+  repoClick,
+}) {
   return (
-    <tr>
+    <tr
+      onClick={(e) => {
+        repoClick(index);
+      }}
+    >
       <td>{name}</td>
       <td>{desc}</td>
       <td>
-        <button onClick={onClick}>{lang}</button>
+        <button onClick={buttonClick}>{lang}</button>
       </td>
       <td>{forks_count}</td>
     </tr>
