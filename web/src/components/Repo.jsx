@@ -1,3 +1,4 @@
+import Button from 'react-bootstrap/Button';
 import './repo.css';
 
 function Repo({ lang, name, desc, forks_count, date }) {
@@ -5,7 +6,9 @@ function Repo({ lang, name, desc, forks_count, date }) {
     <tr>
       <td>{name}</td>
       <td>{desc}</td>
-      <td>{lang}</td>
+      <td>
+        <Button variant="primary">{lang}</Button>
+      </td>
       <td>{forks_count}</td>
     </tr>
   );

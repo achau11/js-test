@@ -3,3 +3,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+th {
+  padding: 20px;
+  border-bottom: gray dotted 1px;
+}

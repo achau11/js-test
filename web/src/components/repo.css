@@ -1,3 +1,14 @@
 td {
   text-align: center;
+  padding: 30px;
+  border-bottom: gray dotted 1px;
+}
+
+tbody tr:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+  
+button {
+    cursor: pointer;
 }

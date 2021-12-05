@@ -28,8 +28,6 @@ export function App() {
       );
     });
 
-  console.log(state);
-
   return (
     <div className="app">
       <Table className="table">
