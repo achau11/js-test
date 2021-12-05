@@ -1,6 +1,6 @@
+import './App.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './App.css';
 import Repo from './components/Repo';
 
 export function App() {
@@ -12,7 +12,6 @@ export function App() {
 
   return (
     <div className="App">
-      <h1>hello</h1>
       <Repo />
       {console.log(repos)}
     </div>

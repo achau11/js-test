@@ -1,12 +1,7 @@
+import './repo.css';
+
 function Repo() {
-  return (
-    <div className="repo">
-      <span>Name</span>
-      <span>Location</span>
-      <span>Type</span>
-      <span>Value</span>
-    </div>
-  );
+  return <h1>repo</h1>;
 }
 
 export default Repo;
