@@ -1,13 +1,13 @@
-import Button from 'react-bootstrap/Button';
 import './repo.css';
 
-function Repo({ lang, name, desc, forks_count, date }) {
+function Repo({ lang, name, desc, forks_count, onClick }) {
+  console.log(onClick);
   return (
     <tr>
       <td>{name}</td>
       <td>{desc}</td>
       <td>
-        <Button variant="primary">{lang}</Button>
+        <button onClick={onClick}>{lang}</button>
       </td>
       <td>{forks_count}</td>
     </tr>

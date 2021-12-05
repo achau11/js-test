@@ -6,14 +6,28 @@ import { Table } from 'react-bootstrap';
 
 export function App() {
   const [state, setState] = useState([]);
+  const [language, setLanguage] = useState('');
   //API call
   useEffect(() => {
     axios.get('http://localhost:4000/repos').then((res) => setState(res.data));
   }, []);
+  //Handler functions
+  const handleLanguageChange = (e) => {
+    const lang = e.target.textContent.toUpperCase();
+    if (language) {
+      setLanguage('');
+    } else {
+      setLanguage(lang);
+    }
+  };
 
-  const repos = state
+  //Filter arrays to display them on what language type was clicked
+  const filtered = !language
+    ? state
+    : state.filter((repo) => repo.language.toUpperCase() === language);
+
+  const repos = filtered
     .sort((a, b) => {
-      console.log(a.created_at, b.created_at);
       return new Date(b.created_at) - new Date(a.created_at);
     })
     .map((repo) => {
@@ -24,6 +38,7 @@ export function App() {
           name={repo.name}
           desc={repo.description}
           forks_count={repo.forks_count}
+          onClick={handleLanguageChange}
         />
       );
     });

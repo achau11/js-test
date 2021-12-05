@@ -5,10 +5,10 @@ td {
 }
 
 tbody tr:hover {
-    background-color: lightgray;
-    cursor: pointer;
+  background-color: lightgray;
+  cursor: pointer;
 }
-  
+
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
