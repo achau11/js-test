@@ -1,7 +1,14 @@
 import './repo.css';
 
-function Repo() {
-  return <h1>repo</h1>;
+function Repo({ lang, name, desc, forks_count }) {
+  return (
+    <tr>
+      <td>{name}</td>
+      <td>{desc}</td>
+      <td>{lang}</td>
+      <td>{forks_count}</td>
+    </tr>
+  );
 }
 
 export default Repo;
