@@ -1,6 +1,6 @@
 import './repo.css';
 
-function Repo({ lang, name, desc, forks_count }) {
+function Repo({ lang, name, desc, forks_count, date }) {
   return (
     <tr>
       <td>{name}</td>

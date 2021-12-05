@@ -11,17 +11,22 @@ export function App() {
     axios.get('http://localhost:4000/repos').then((res) => setState(res.data));
   }, []);
 
-  const repos = state.map((repo) => {
-    return (
-      <Repo
-        key={repo.id}
-        lang={repo.language}
-        name={repo.name}
-        desc={repo.description}
-        forks_count={repo.forks_count}
-      />
-    );
-  });
+  const repos = state
+    .sort((a, b) => {
+      console.log(a.created_at, b.created_at);
+      return new Date(b.created_at) - new Date(a.created_at);
+    })
+    .map((repo) => {
+      return (
+        <Repo
+          key={repo.id}
+          lang={repo.language}
+          name={repo.name}
+          desc={repo.description}
+          forks_count={repo.forks_count}
+        />
+      );
+    });
 
   console.log(state);
 
