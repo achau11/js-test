@@ -37,8 +37,6 @@ export function App() {
     setSelected(null);
   };
 
-  console.log(selected);
-
   //Filter arrays to display them on what language type was clicked
   const filtered = !language
     ? state

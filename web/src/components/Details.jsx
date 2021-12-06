@@ -27,13 +27,11 @@ function Details({ name, backClick }) {
       .catch((err) => console.log(err));
   }, [name]);
 
-  console.log(latestCommit);
-
   return (
     <div className="details">
       <h1>Details</h1>
       <button onClick={backClick}>Back</button>
-      {latestCommit && (
+      {latestCommit ? (
         <ul>
           <li>
             <b>Message: </b>
@@ -48,6 +46,8 @@ function Details({ name, backClick }) {
             {latestCommit.commit.author.date}
           </li>
         </ul>
+      ) : (
+        <p>Finding repo details</p>
       )}
       <p>
         <b>Readme: </b>
