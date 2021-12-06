@@ -15,6 +15,8 @@ export function App() {
   }, []);
   //Handler functions
   const handleLanguageChange = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     const lang = e.target.textContent.toUpperCase();
     if (language) {
       // If the language button is clicked again it will reset to display unfiltered values.
@@ -24,9 +26,15 @@ export function App() {
     }
   };
 
-  const handleRepoClick = (index) => {
+  const handleRepoClick = (e, index) => {
+    e.preventDefault();
     const selectedRepo = { ...state[index] };
     setSelected(selectedRepo);
+  };
+
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    setSelected(null);
   };
 
   console.log(selected);
@@ -70,7 +78,7 @@ export function App() {
           <tbody>{repos}</tbody>
         </Table>
       ) : (
-        <Details name={selected.full_name} />
+        <Details name={selected.full_name} backClick={handleBackClick} />
       )}
     </div>
   );

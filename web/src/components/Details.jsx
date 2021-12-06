@@ -2,19 +2,19 @@ import './details.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-function Details({ name }) {
+function Details({ name, backClick }) {
   const [content, setContent] = useState('Loading');
   useEffect(() => {
     axios
       .get(`https://raw.githubusercontent.com/${name}/master/README.md`)
       .then((res) => setContent(res.data))
-      .catch((err) => setContent('Not Available'));
+      .catch((err) => setContent('Not Found'));
   });
 
   return (
     <div className="details">
       <h1>Details</h1>
-      <button>Back</button>
+      <button onClick={backClick}>Back</button>
       <ul>
         <li>Name</li>
         <li>Author</li>

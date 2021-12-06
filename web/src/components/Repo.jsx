@@ -12,7 +12,7 @@ function Repo({
   return (
     <tr
       onClick={(e) => {
-        repoClick(index);
+        repoClick(e, index);
       }}
     >
       <td>{name}</td>
