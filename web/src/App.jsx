@@ -3,10 +3,12 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Repo from './components/Repo';
 import { Table } from 'react-bootstrap';
+import Details from './components/Details';
 
 export function App() {
   const [state, setState] = useState([]);
   const [language, setLanguage] = useState('');
+  const [selected, setSelected] = useState(null); //This is the hook for the selected repo
   //API call
   useEffect(() => {
     axios.get('http://localhost:4000/repos').then((res) => setState(res.data));
@@ -22,9 +24,12 @@ export function App() {
     }
   };
 
-  const handleRepoClick = (id) => {
-    console.log(id);
+  const handleRepoClick = (index) => {
+    const selectedRepo = { ...state[index] };
+    setSelected(selectedRepo);
   };
+
+  console.log(selected);
 
   //Filter arrays to display them on what language type was clicked
   const filtered = !language
@@ -52,17 +57,21 @@ export function App() {
 
   return (
     <div className="app">
-      <Table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Language</th>
-            <th>Forks Count</th>
-          </tr>
-        </thead>
-        <tbody>{repos}</tbody>
-      </Table>
+      {!selected ? (
+        <Table className="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Language</th>
+              <th>Forks Count</th>
+            </tr>
+          </thead>
+          <tbody>{repos}</tbody>
+        </Table>
+      ) : (
+        <Details name={selected.full_name} />
+      )}
     </div>
   );
 }
